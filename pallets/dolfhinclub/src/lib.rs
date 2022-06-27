@@ -86,7 +86,10 @@ pub mod pallet {
 			Ok(())
 		}
 		#[pallet::weight(10000)]
-		pub fn add_member(origin: OriginFor<T>, member: T::AccountId) -> DispatchResult {
+		pub fn add_member_to_club_one(
+			origin: OriginFor<T>,
+			member: T::AccountId,
+		) -> DispatchResult {
 			ensure_root(origin)?;
 			ensure!(Self::get_waitingList().contains(&member) == true, <Error<T>>::NotAMember);
 
